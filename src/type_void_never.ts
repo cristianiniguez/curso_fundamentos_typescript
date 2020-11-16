@@ -27,10 +27,10 @@ showFormattedInfo({ id: 1, name: 'criniguez' });
 let unusable: void;
 
 // con "strict": true
-unusable = null; // Type 'null' is not assignable to type 'void'
+// unusable = null; // Type 'null' is not assignable to type 'void'
 
 // con "strict": false
-unusable = null; // ok
+// unusable = null; // ok
 
 unusable = undefined; // ok
 
