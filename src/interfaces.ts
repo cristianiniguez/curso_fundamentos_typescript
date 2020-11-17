@@ -1,3 +1,5 @@
+export {};
+
 // Función para mostrar una fotografía
 enum PictureOrientation {
   PictureLandscape,
@@ -31,3 +33,41 @@ showPicture({
   orientation: PictureOrientation.PicturePortrait,
   // extra: 'test',
 });
+
+interface PictureConfig {
+  title?: string;
+  date?: string;
+  orientation?: PictureOrientation;
+}
+
+function generatePicture(config: PictureConfig) {
+  const pic = { title: 'default', date: '2020-03' };
+  if (config.title) {
+    pic.title = config.title;
+  }
+  if (config.date) {
+    pic.date = config.date;
+  }
+  return pic;
+}
+
+let picture = generatePicture({});
+console.log({ picture }); // { picture: { title: 'default', date: '2020-03' } }
+picture = generatePicture({ title: 'Travel Pic' });
+console.log({ picture }); // { picture: { title: 'Travel Pic', date: '2020-03' } }
+picture = generatePicture({ title: 'Travel Pic', date: '2021-05' });
+console.log({ picture }); // { picture: { title: 'Travel Pic', date: '2021-05' } }
+
+// Interfaz: Usuario
+
+interface User {
+  readonly id: number; // solo lectura
+  username: string;
+  isPro: boolean;
+}
+
+let user: User;
+user = { id: 10, username: 'criniguez', isPro: true };
+console.log({ user }); // { user: { id: 10, username: 'criniguez', isPro: true } }
+user.username = 'dariorojas';
+// user.id = 20; // Cannot assign to 'id' because it is a read-only property
