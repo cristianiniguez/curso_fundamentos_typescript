@@ -33,3 +33,23 @@ let createPic = (title: string, date: string, size: SquareSize): object => ({ ti
 
 const picture = createPic('Platzi Session', '2020-03-10', '100x100');
 console.log({ picture }); // { picture: { title: 'Platzi Session', date: '2020-03-10', size: '100x100' } }
+
+// Tipo de retorno con TypeScript
+
+function handleError(code: number, message: string): never | string {
+  if (message === 'error') {
+    throw new Error(`${message}. Code error: ${code}`);
+  } else {
+    return 'An error has occured';
+  }
+}
+
+let result = handleError(200, 'OK'); // retorna un string
+console.log({ result }); // { result: 'An error has occured' }
+
+try {
+  result = handleError(404, 'error'); // no retorna nada
+  console.log({ result }); // Error: error. Code error: 404
+} catch (error) {
+  console.log({ error });
+}
